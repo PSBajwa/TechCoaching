@@ -4,19 +4,19 @@ public class Basic_Calculator {
 
     static String[] calculatorOptions ={"Addition", "Subtraction", "Multiplication", "Division"};
     
-    private double intAddition(double numX, double numY)
+    private double doAddition(double numX, double numY)
     {
         return numX + numY;
     }
-    private double intSubtraction(double numX, double numY)
+    private double doSubtraction(double numX, double numY)
     {
         return numX - numY;
     }
-    private double intMultiplication(double numX, double numY)
+    private double doMultiplication(double numX, double numY)
     {
         return numX *  numY;
     }
-    private double intDivision(double numX, double numY)
+    private double doDivision(double numX, double numY)
     {
         return numX / numY;
     }
@@ -44,13 +44,13 @@ public class Basic_Calculator {
     {
         switch(calculationChoice) {
             case 1:
-            return intAddition(numX, numY);
+            return doAddition(numX, numY);
             case 2:
-            return intSubtraction(numX, numY);
+            return doSubtraction(numX, numY);
             case 3:
-            return intMultiplication(numX, numY);
+            return doMultiplication(numX, numY);
             case 4:
-            return intDivision(numX, numY);
+            return doDivision(numX, numY);
             default:
             return 0.0d;
         }    
@@ -70,7 +70,7 @@ public class Basic_Calculator {
     }
     public static void main(String[] args) {
         Basic_Calculator myCalculator = new Basic_Calculator();
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        Scanner scanUserInput = new Scanner(System.in);  // Create a Scanner object
         boolean startCalculation = false;
         boolean verifyNum = false;
         String choice = "0";
@@ -81,7 +81,7 @@ public class Basic_Calculator {
                 
         while (!startCalculation)
         {   
-            choice = myObj.nextLine(); // Read user input
+            choice = scanUserInput.nextLine(); // Read user input
             choiceNum = (int)myCalculator.verifyInput(choice);
             startCalculation = myCalculator.initiateCalculation(choiceNum);
         }
@@ -89,7 +89,7 @@ public class Basic_Calculator {
         System.out.print("Please enter first number: ");
         while (!verifyNum)
         {
-        numX = myCalculator.verifyInput(myObj.nextLine());
+        numX = myCalculator.verifyInput(scanUserInput.nextLine());
         verifyNum = true;
         if (numX == -0.0d)
         {
@@ -103,7 +103,7 @@ public class Basic_Calculator {
         System.out.print("Please enter second number: ");
         while (!verifyNum)
         {
-        numY = myCalculator.verifyInput(myObj.nextLine());
+        numY = myCalculator.verifyInput(scanUserInput.nextLine());
         verifyNum = true;
         if (numY == -0.0d)
         {
@@ -114,7 +114,7 @@ public class Basic_Calculator {
         }
         
         System.out.println("The result of calculation is: " + myCalculator.executeCalculation(choiceNum, numX, numY));
-        myObj.close();
+        scanUserInput.close();
       }
 
 }
